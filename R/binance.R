@@ -1021,7 +1021,7 @@ binance_all_orders <- function(symbol, order_id, start_time, end_time, limit) {
     }
 
     ord <- binance_query(endpoint = 'api/v3/allOrders', params = params, sign = TRUE)
-    ord <- rbindlist(ord)
+    ord <- rbindlist(ord, fill = TRUE)
 
     if (nrow(ord) > 0) {
         for (v in c('price', 'origQty', 'executedQty', 'cummulativeQuoteQty', 'stopPrice', 'icebergQty')) {
